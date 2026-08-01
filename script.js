@@ -58,12 +58,12 @@ function renderGallery() {
 
         // Ссылка на полноразмерное фото (для лайтбокса)
         const link = document.createElement('a');
-        link.href = filename;
+        link.href = `${filename}`; // ИЗМЕНЕНИЕ: убрали 'images/'
         link.className = 'lightbox-link';
         link.target = '_blank';
 
         const img = document.createElement('img');
-        img.src = filename;
+        img.src = `${filename}`;   // ИЗМЕНЕНИЕ: убрали 'images/'
         img.alt = filename;
         img.loading = 'lazy';
 
@@ -72,7 +72,7 @@ function renderGallery() {
 
         // Кнопка скачивания отдельного фото
         const downloadBtn = document.createElement('a');
-        downloadBtn.href = filename;
+        downloadBtn.href = `${filename}`; // ИЗМЕНЕНИЕ: убрали 'images/'
         downloadBtn.download = filename;
         downloadBtn.className = 'download-btn';
         downloadBtn.textContent = '⬇️';
@@ -138,7 +138,7 @@ downloadAllBtn.addEventListener('click', async () => {
 
         // Загружаем все изображения и добавляем в архив
         const fetchPromises = allImages.map(async (filename) => {
-            const response = await fetch(filename);
+            const response = await fetch(`${filename}`); // ИЗМЕНЕНИЕ: убрали 'images/'
             if (!response.ok) throw new Error(`Не удалось загрузить ${filename}`);
             const blob = await response.blob();
             folder.file(filename, blob);
@@ -180,4 +180,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Загружаем список фото
     loadImageList();
-});
+});м
