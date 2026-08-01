@@ -58,7 +58,7 @@ function renderGallery() {
 
         // Ссылка на полноразмерное фото (для лайтбокса)
         const link = document.createElement('a');
-        link.href = `images/${filename}`;
+        link.href = `${filename}`;
         link.className = 'lightbox-link';
         link.target = '_blank';
 
